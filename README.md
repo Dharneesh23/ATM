@@ -54,7 +54,7 @@ Welcome to the **ATM Management System** project! This Java-based application si
 
 ## Diagram
 
-![image](https://excalidraw.com/#json=u0aP1lM91hb8pG07GKH6b,K3CT_CJlmXvXohXIkPQWsA)
+![image](https://github.com/user-attachments/assets/[9f5fb1e7-f109-42cc-b83c-676c01540b29](https://excalidraw.com/#json=N_D_EdSR7lgnyDEoLBfth,5q78jLLsNrwFKVF6_55aPA))
 
 ---
 
