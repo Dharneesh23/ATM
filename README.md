@@ -1,8 +1,16 @@
 # ATM Management System
 
+## Overview
 Welcome to the **ATM Management System** project! This Java-based application simulates ATM operations, enabling users to perform secure banking transactions with features like balance inquiries, withdrawals, deposits, and viewing transaction history.
+The ATM management system that simulates banking operations such as:
+- User Login
+- Balance Checking
+- Cash Withdrawal
+- Cash Deposit
+- PIN Change
+- Admin Operations (Add User, Delete User, View Transactions,Add Cash In ATM)
 
----
+## Class Structure 
 
 ## Features
 
@@ -13,27 +21,15 @@ Welcome to the **ATM Management System** project! This Java-based application si
 - **Transaction History**: View detailed records of user transactions.
 - **Admin Functions**: Monitor and manage ATM transactions (optional).
 
----
 
+  ## Console Execution
+
+  
 ## Getting Started
 
 ### Prerequisites
 - **Java Development Kit (JDK)**: Version 23.
 - **IDE**: IntelliJ IDEA.
-
-### Installation
-1. Clone this repository to your local machine:
-   ```bash
-   git clone https://github.com/NBN-Barath/ATM.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd ATM/ATM
-   ```
-3. Open the project in your preferred IDE.
-4. Compile and run the application.
-
----
 
 ## Usage
 
@@ -50,34 +46,25 @@ Welcome to the **ATM Management System** project! This Java-based application si
 
 
 
----
-
-## Diagram
-
-![image](https://github.com/user-attachments/assets/[9f5fb1e7-f109-42cc-b83c-676c01540b29](https://excalidraw.com/#json=N_D_EdSR7lgnyDEoLBfth,5q78jLLsNrwFKVF6_55aPA))
-
----
-
-## Contribution Guidelines
-
-We welcome contributions! Please follow these steps:
-
-1. Fork this repository.
-2. Create a new branch for your feature or bug fix.
+### Installation
+Clone this repository to your local machine:
    ```bash
-   git checkout -b feature-name
+   git clone https://github.com/Dharneesh23/ATM.git
    ```
-3. Commit your changes with a clear message.
+Change Directory:
    ```bash
-   git commit -m "Description of changes"
+   c ATM 4
    ```
-4. Push your branch.
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
+Compile the Main File
+```bash
+javac ATM 4.java
+```
+Run in the Terminal
+```bash
+java ATM 4
+```
 
----
+
 
 
 ## Contact
@@ -89,18 +76,3 @@ For any queries or feedback, please reach out:
 
 ---
 
-Thank you for exploring the ATM Management System!
-Change PIN: Allows you to set a new PIN.
-Project Structure
-ATMSystem.java: The main Java program that runs the ATM system.
-README.md: This file.
-Example Screenshot
-Below is an example of the ATM's interface:
-
-
-
-Contributing
-Feel free to fork the repository and create a pull request if you have suggestions for improvements or new features. If you encounter any bugs, please report them in the issues section.
-
-License
-This project is open-source and available under the MIT License. See the LICENSE file for more details
