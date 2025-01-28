@@ -29,6 +29,12 @@ Operations (Add User, Delete User, View Transactions,Add Cash In ATM)
 
   ## Console Execution
 
+
+
+
+https://github.com/user-attachments/assets/c16975ce-5552-4e37-b942-4f9a3a368830
+
+
   
 ## Getting Started
 
