@@ -8,9 +8,14 @@ The ATM management system that simulates banking operations such as:
 - Cash Withdrawal
 - Cash Deposit
 - PIN Change
-- Admin Operations (Add User, Delete User, View Transactions,Add Cash In ATM)
+- Admin
+Operations (Add User, Delete User, View Transactions,Add Cash In ATM)
 
 ## Class Structure 
+
+
+![ATM excalidraw](https://github.com/user-attachments/assets/1ae86f4e-042f-4004-8048-e4981608bc0e)
+
 
 ## Features
 
