@@ -1,3 +1,4 @@
+import Note.Note;
 import Note.Notes;
 import Notes.Note100;
 import Notes.Note200;
@@ -7,8 +8,9 @@ import Notes.Note500;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class AdminAction extends ATM{
-    public static Account adminLogin(ArrayList<Account> accounts, Scanner sc) { // Method to Admin Login
+class AdminAction implements AdminactionInterface{
+    @Override
+    public  Account Login(ArrayList<Account> accounts, Scanner sc) { // Method to Admin Login
         System.out.print("Enter Admin ID: ");
         String adminId = sc.next();
         int incre = 1;
@@ -37,7 +39,7 @@ class AdminAction extends ATM{
         }
         return null;
     }
-
+@Override
     public void addUser(ArrayList<Account> allAccounts, Scanner sc) { // Method to add a user
         System.out.print("Enter new User ID: ");
         String userId = sc.next();
@@ -53,7 +55,7 @@ class AdminAction extends ATM{
         allAccounts.add(newUser); // adding the new user in allAccount array list of object
         System.out.println("User added successfully.");
     }
-
+@Override
     public void deleteUser(ArrayList<Account> accounts, Scanner sc) { // Method to delete a user
         System.out.print("Enter User ID to delete: ");
         String userId = sc.next();
@@ -72,7 +74,7 @@ class AdminAction extends ATM{
             System.out.println("User with ID " + userId + " not found.");
         }
     }
-
+@Override
     public void viewUsers(ArrayList<Account> accounts) { // Method to view all user
         System.out.println("List of Users:");
         for (Account account : accounts) { // Iterates the user information from list
@@ -82,9 +84,9 @@ class AdminAction extends ATM{
         }
     }
 
-
-    public void depositecashtoatm(ArrayList<Notes> cashInventory, Account loginedAdmin, Scanner sc) {
-        for (Notes notes : cashInventory) {
+@Override
+    public void depositecashtoatm(Note<Notes> cashInventory, Account loginedAdmin, Scanner sc) {
+        for (Notes notes : cashInventory.getNote()) {
             System.out.println(notes.getNoteValue() + " " + notes.getNoteCount()); //to view how many notes and note count
         }
         System.out.println("Enter the amount of money to add to the ATM:");
@@ -111,7 +113,7 @@ class AdminAction extends ATM{
             ATM.setatmbalance(ATM.getatmbalance() + totalAmount);// Adding transaction in account
             System.out.println("Money added successfully to ATM.");
             loginedAdmin.setTransactions(new Transaction("Deposit", totalAmount, loginedAdmin.getId()));
-            for (Notes notes : cashInventory) {
+            for (Notes notes : cashInventory.getNote()) {
                 System.out.println(notes.getNoteValue() + " " + notes.getNoteCount()); //to view how many notes and note count
             }
         } else {
@@ -119,10 +121,10 @@ class AdminAction extends ATM{
         }
 
     }
-
-    private void addToCashInventory(ArrayList<Notes> cashInventory, Notes newNote) { // Method for  add the cash for inventory
+@Override
+    public void addToCashInventory( Note<Notes>cashInventory, Notes newNote) { // Method for  add the cash for inventory
         boolean found = false;
-        for (Notes note : cashInventory) { // Iterates the notes from cashInventory
+        for (Notes note : cashInventory.getNote()) { // Iterates the notes from cashInventory
             if (note.getNoteValue() == newNote.getNoteValue()) { // check the get note value to new note value
                 note.setNoteCount(note.getNoteCount() + newNote.getNoteCount()); // set the old not value + new note vale
                 found = true;
@@ -133,14 +135,15 @@ class AdminAction extends ATM{
             cashInventory.add(newNote); // add new note
         }
     }
-    public static double ATMBalance(ArrayList<Notes> cashInventory) { // method to check ATM balance
+    @Override
+    public  double ATMBalance(Note<Notes> cashInventory) { // method to check ATM balance
         double totalBalance = 0;
-        for (Notes note : cashInventory) { // Iterates the notes from cashInventory
+        for (Notes note : cashInventory.getNote()) { // Iterates the notes from cashInventory
             totalBalance += note.getNoteCount() * note.getNoteValue();
         }
         return totalBalance;
     }
-
+@Override
     public void viewTransaction(ArrayList<Account>accounts) {
         System.out.println("Enter option 1.user\n2.admin");
         Scanner scanner = new Scanner(System.in);
@@ -199,4 +202,7 @@ class AdminAction extends ATM{
 
         }
     }
+
+
+
 }

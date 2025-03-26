@@ -3,3 +3,4 @@ public class Main {
         ATM.start();//to call  the start method with the help of atm class
     }
 }
+

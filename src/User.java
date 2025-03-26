@@ -8,25 +8,47 @@ class User extends Account{
         super(userId,userPin);
     }
 
-    public User() {} // Default Constructor
+    public User() {
 
-    // getters and setters
+    }
 
-    public double getBalance() { // user balance getter
+
+@Override
+public String getId() {
+    return super.accountId;
+}
+
+    @Override
+    public String getPin() {
+        return super.pin;
+    }
+
+    @Override
+    public void setPin(String pin) {
+        super.pin = pin;
+    }
+
+    @Override
+    public ArrayList<Transaction> getTransactions() {
+        return super.transactions;
+    }
+
+    @Override
+    public void addTransaction(Transaction transaction) {
+        super.transactions.add(transaction);
+    }
+
+    @Override
+    public void setTransactions(Transaction transactions) {
+
+    }
+
+    public double getBalance() { // User balance getter
         return balance;
     }
 
-    public void setBalance(double balance) { // user balance setter
+    public void setBalance(double balance) { // User balance setter
         this.balance = balance;
-    }
-    static ArrayList<Account> getAdminList()
-    {
-        return customer;
-    }
-
-    static ArrayList<Account> getUserList()
-    {
-        return customer;
     }
 
 

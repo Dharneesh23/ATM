@@ -1,11 +1,12 @@
+import Note.Note;
 import Note.Notes;
 import Notes.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class UserAction {
-
-    public static Account userLogin(ArrayList<Account> accounts, User user, Scanner sc) { // Method user login
+class UserAction implements UseractionInterface {
+@Override
+    public  Account Login(ArrayList<Account> accounts, Scanner sc) { // Method user login
         System.out.print("Enter User ID: ");
         String userId = sc.next();
         int attempt = 1;
@@ -38,7 +39,7 @@ class UserAction {
         System.out.println("Invalid User id.....");
         return null;
     }
-
+@Override
     public void changePin(Account account, Scanner sc, User user) { // method for change pin
         System.out.println("Enter your Pin :");
         String oldpin= sc.next();
@@ -53,7 +54,7 @@ class UserAction {
         }
     }
 
-
+@Override
         public  void withdraw(User user,Scanner scanner,Account account)throws CloneNotSupportedException{//withdraw method
 
             System.out.println("Enter the withdraw amount :");
@@ -61,7 +62,7 @@ class UserAction {
             double amount=amt;// to store the amount to anoyher variable amount
             ArrayList<String> note_Tr=new ArrayList<>();//array list for copy notes
             ArrayList<Notes> Note_Dp=new ArrayList<>();//array list for dupilict notes
-            for (Notes note:ATM.getNotesArrayList()){//notes array list obj name will check one by one
+            for (Notes note:ATM.getNotesArrayList().getNote()){//notes array list obj name will check one by one
                 Note_Dp.add(note.clone());//to get the dupulecit notes to add in clone menthod
             }
             for (int i = 0; i < Note_Dp.size() - 1; i++) { //sorting of notes in descending order
@@ -81,9 +82,6 @@ class UserAction {
                     int noteValue = note.getNoteValue();// store the note value
                     int availableNotes = note.getNoteCount();// store the note count
                     int requiredNotes = (int) (amount / noteValue);// calculate the required note
-
-
-
                     if (requiredNotes > 0 && noteValue <= amount && availableNotes > 0) {
                         int notesToWithdraw = Math.min(requiredNotes, availableNotes);  // Use the lesser of required and available
                         //  Show how the amount is changing after each withdrawal
@@ -115,8 +113,11 @@ class UserAction {
             }
         }
 
-    public void deposit(Account account, User user, ArrayList<Notes> cashInventory, Scanner sc) {//deposit method
-        for (Notes notes : cashInventory) {
+
+
+    @Override
+    public void deposit(Account account, User user, Note<Notes> cashInventory, Scanner sc) {//deposit method
+        for (Notes notes : cashInventory.getNote()) {
             System.out.println(notes.getNoteValue() + " " + notes.getNoteCount());
         }
         System.out.print("Enter your deposite amount : ");
@@ -138,7 +139,6 @@ class UserAction {
             addToCashInventory(cashInventory, new Note200(num200));
             addToCashInventory(cashInventory, new Note500(num500));
             addToCashInventory(cashInventory, new Note2000(num2000));
-
             user.setBalance(user.getBalance() + totalAmount);
             ATM.setatmbalance(ATM.getatmbalance()+totalAmount);
             // Add transaction for the user
@@ -147,7 +147,7 @@ class UserAction {
 
             System.out.println("Deposit amount successful.....");
 
-            for (Notes notes : cashInventory) {
+            for (Notes notes : cashInventory.getNote()) {
                 System.out.println(notes.getNoteValue() + " " + notes.getNoteCount()); //to view how many notes and note count
             }
         }
@@ -156,11 +156,11 @@ class UserAction {
         }
     }
 
-
-    private void addToCashInventory(ArrayList<Notes> cashInventory, Notes newNote) { // method to add money to inventory
+@Override
+    public void addToCashInventory( Note<Notes>cashInventory, Notes newNote) { // method to add money to inventory
         boolean value = false;
 
-        for (Notes note : cashInventory) { // Iterates the notes from cashInventory
+        for (Notes note : cashInventory.getNote()) { // Iterates the notes from cashInventory
             if (note.getNoteValue() == newNote.getNoteValue()) { // check the  note value to new note value
                 note.setNoteCount(note.getNoteCount() + newNote.getNoteCount()); // set the old not value + new note vale
                 value = true;
@@ -171,7 +171,7 @@ class UserAction {
             cashInventory.add(newNote); // add new note
         }
     }
-
+@Override
     public void viewTransactions(Account account) {//view transation method for user
         if(account.getTransactions().isEmpty())
         {
@@ -183,4 +183,6 @@ class UserAction {
             }
         }
     }
+
+
 }
